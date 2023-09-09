@@ -9,6 +9,7 @@ public class WordManager {
     public void start() {
         WordCRUD wordCRUD = new WordCRUD();
         Scanner scanner = new Scanner(System.in);
+
         int choice;
 
         while(true) {
@@ -23,6 +24,7 @@ public class WordManager {
                     "0. 나가기\n" +
                     "********************\n" +
                     "=> 원하는 메뉴는? ");
+
             choice = scanner.nextInt();
 
             if (choice == 1) {
