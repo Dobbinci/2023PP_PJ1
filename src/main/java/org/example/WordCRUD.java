@@ -23,6 +23,8 @@ public class WordCRUD implements ICRUD{
 
         wordList.add(newWord);
 
+        System.out.println("단어가 추가되었습니다\n");
+
     }
 
     @Override
