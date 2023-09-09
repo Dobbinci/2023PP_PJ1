@@ -19,7 +19,7 @@ public class WordCRUD implements ICRUD{
         newWord.setLevel(level);
         newWord.setName(name);
         newWord.setMeaning(meaning);
-        newWord.setId(wordList.size());
+        newWord.setId(wordList.size()+1);
 
         wordList.add(newWord);
 

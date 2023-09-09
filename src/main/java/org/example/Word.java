@@ -39,14 +39,12 @@ public class Word {
     }
 
     public String toString() {
-        String information = new String();
         String Asterisk = new String();
-        //make *
+
         for (int i=0; i<level; i++) {
             Asterisk = Asterisk + "*";
         }
-        return information = getId() + "  " + Asterisk + "     " + getName() + "  " + getMeaning();
 
-
+        return getId() + "  " + Asterisk + "     " + getName() + "  " + getMeaning();
     }
 }
