@@ -80,9 +80,6 @@ public class WordCRUD implements ICRUD{
         System.out.println("정말로 삭제하시겠어요?(Y/N): ");
         String reallyDelete = scanner.nextLine();
         //if user chose really to delete -> delete
-        for (Integer index : searchedIndex) {
-            System.out.println(index);
-        }
         if(reallyDelete.equalsIgnoreCase("Y")) {
             wordList.remove((int)searchedIndex.get(chosenNum-1));
         }
