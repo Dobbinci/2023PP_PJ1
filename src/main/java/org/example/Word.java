@@ -64,9 +64,7 @@ public class Word {
 
     public static Word fromLine(String line) {
         String[] parts = line.split(" ", 4);
-        if (parts.length != 4) {
-            throw new IllegalArgumentException("잘못된 형식입니다");
-        }
+
         return new Word(Long.parseLong(parts[0]), Integer.parseInt(parts[1]), parts[2], parts[3]);
     }
 }
