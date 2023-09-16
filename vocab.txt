@@ -1,4 +1,4 @@
-0 1 apple 사과
+0 1 apple 사과, 애플
 1 1 banana 바나나
 2 2 cherry 체리
 3 1 dog 개
@@ -25,6 +25,6 @@
 24 1 yellow 노란
 25 2 zebra 얼룩말
 26 3 aeroplane 비행기
-27 1 bird 새
-28 2 cat 고양이
+27 1 bird 조류
+28 2 cat 고양이, 냐옹이
 29 3 dragon 드래곤
