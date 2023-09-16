@@ -6,6 +6,14 @@ public class Word {
     String name;
     String meaning;
 
+    public Word(){}
+    public Word(long id, int level, String name, String meaning) {
+        this.id = id;
+        this.level = level;
+        this.name = name;
+        this.meaning = meaning;
+    }
+
     public long getId() {
         return id;
     }
@@ -48,14 +56,11 @@ public class Word {
         return "  " + Asterisk + "     " + getName() + "  " + getMeaning();
     }
 
-    public void fromLine(String line) {
+    public static Word fromLine(String line) {
         String[] parts = line.split(" ", 4);
         if (parts.length != 4) {
-            throw new IllegalArgumentException("Invalid format");
+            throw new IllegalArgumentException("잘못된 형식입니다");
         }
-        setId(Long.parseLong(parts[0]));
-        setLevel(Integer.parseInt(parts[1]));
-        setName(parts[2]);
-        setMeaning(parts[3]);
+        return new Word(Long.parseLong(parts[0]), Integer.parseInt(parts[1]), parts[2], parts[3]);
     }
 }

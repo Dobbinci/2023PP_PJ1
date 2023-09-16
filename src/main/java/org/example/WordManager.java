@@ -10,6 +10,8 @@ public class WordManager {
         WordCRUD wordCRUD = new WordCRUD();
         Scanner scanner = new Scanner(System.in);
 
+        //readFromFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
+
         int choice;
 
         while(true) {

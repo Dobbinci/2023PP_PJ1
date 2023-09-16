@@ -1,9 +1,10 @@
 package org.example;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordCRUD implements ICRUD{
-    private ArrayList<Word> wordList = new ArrayList<Word>();
+    private static ArrayList<Word> wordList = new ArrayList<Word>();
     @Override
     public void addWord() {
         Word newWord = new Word();
@@ -38,7 +39,7 @@ public class WordCRUD implements ICRUD{
         //print searched words
         System.out.println("-------------------------------- ");
         for(int i=0; i<searchedIndex.size(); i++) {
-            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toStringForSearching());
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toString());
         }
         System.out.println("-------------------------------- ");
 
@@ -68,7 +69,7 @@ public class WordCRUD implements ICRUD{
         //print searched words
         System.out.println("-------------------------------- ");
         for(int i=0; i<searchedIndex.size(); i++) {
-            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toStringForSearching());
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toString());
         }
         System.out.println("-------------------------------- ");
 
@@ -84,8 +85,6 @@ public class WordCRUD implements ICRUD{
             System.out.println(searchedIndex.get(i));
         }
         if(reallyDelete.equalsIgnoreCase("Y")) {
-            System.out.println("index: " + searchedIndex.get(chosenNum-1));
-            System.out.println(searchedIndex.get(chosenNum-1).getClass());
             wordList.remove((int)searchedIndex.get(chosenNum-1));
         }
         System.out.println("삭제가 완료되었습니다");
@@ -152,5 +151,28 @@ public class WordCRUD implements ICRUD{
         }
 
         return searchedIndex;
+    }
+
+    public static void readFromFile(String fileName) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            int count = 0;
+            while ((line = reader.readLine()) != null) {
+                wordList.add(Word.fromLine(line));
+                count ++;
+            }
+            System.out.println(count + "개 단어 로딩 완료!");
+        } catch (IOException e) {
+            System.out.println("파일 로드 실패");
+            e.printStackTrace();
+        }
+    }
+    public static void writeToFile(String fileName) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (int i=0; i<wordList.size(); i++) {
+                writer.write(i + wordList.get(i).toString());
+                writer.newLine();
+            }
+        }
     }
 }
