@@ -5,8 +5,9 @@ public class Word {
     int level;
     String name;
     String meaning;
-
+    //default constructor
     public Word(){}
+    //constructor w/ parameters(for file IO)
     public Word(long id, int level, String name, String meaning) {
         this.id = id;
         this.level = level;
@@ -61,7 +62,7 @@ public class Word {
 
         return " " + getLevel() + " " + getName() + " " + getMeaning();
     }
-
+    //method to insert data into Word class from the given line
     public static Word fromLine(String line) {
         String[] parts = line.split(" ", 4);
 

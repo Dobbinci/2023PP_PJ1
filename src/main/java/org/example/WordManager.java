@@ -11,10 +11,10 @@ public class WordManager {
     public void start() {
         WordCRUD wordCRUD = new WordCRUD();
         Scanner scanner = new Scanner(System.in);
-
+        //load vocabularies from file
         readFromFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
 
-        int choice;
+        int choice; //user's chosen menu number
 
         while(true) {
             System.out.println("********************\n" +
@@ -57,6 +57,7 @@ public class WordManager {
                 System.out.println("으어어어어어어");
                 exit(0);
             } else {
+                //invalid menu number
                 System.out.println("잘못된 메뉴 번호 입니다");
             }
         }

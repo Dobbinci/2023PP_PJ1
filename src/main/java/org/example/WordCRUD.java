@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordCRUD implements ICRUD{
-    private static final ArrayList<Word> wordList = new ArrayList<Word>();
+    private static final ArrayList<Word> wordList = new ArrayList<Word>(); //list of words
     Scanner scanner = new Scanner(System.in);
+    //method to add word
     @Override
     public void addWord() {
         Word newWord = new Word();
@@ -27,7 +28,7 @@ public class WordCRUD implements ICRUD{
         System.out.println("단어가 추가되었습니다\n");
 
     }
-
+    //method to update meaning of word
     @Override
     public void updateWord() {
         System.out.println("수정할 단어를 입력하세요 ");
@@ -56,7 +57,7 @@ public class WordCRUD implements ICRUD{
         System.out.println("성공적으로 수정 되었습니다");
 
     }
-
+    //method to delete word
     @Override
     public void deleteWord() {
         System.out.println("삭제할 단어를 입력하세요 ");
@@ -74,7 +75,7 @@ public class WordCRUD implements ICRUD{
         //ask which word will be updated
         System.out.println("삭제할 번호 선택: ");
         int chosenNum = scanner.nextInt();
-        //문자열 씹힘
+        //스트링 씹혀서 추가함
         scanner.nextLine();
         System.out.println("정말로 삭제하시겠어요?(Y/N): ");
         String reallyDelete = scanner.nextLine();
@@ -87,7 +88,7 @@ public class WordCRUD implements ICRUD{
         }
         System.out.println("삭제가 완료되었습니다");
     }
-
+    //method to show words by input word
     public void listByWord() {
         System.out.println("검색할 단어를 입력하세요 ");
         String searchedWord = scanner.nextLine();
@@ -101,7 +102,7 @@ public class WordCRUD implements ICRUD{
         }
         System.out.println("-------------------------------- ");
     }
-
+    //method to show some words by level
     public void listByLevel() {
         System.out.println("=> 레벨(1:초급, 2:중급, 3:고급) 선택 : ");
         int searchedLevel = scanner.nextInt();
@@ -115,7 +116,7 @@ public class WordCRUD implements ICRUD{
         System.out.println("-------------------------------- ");
 
     }
-
+    //method to show all of words
     @Override
     public void listAll() {
         System.out.println("-------------------------------- ");
@@ -124,7 +125,7 @@ public class WordCRUD implements ICRUD{
         }
         System.out.println("-------------------------------- ");
     }
-
+    //method to search words by input word and return their index
     public ArrayList<Integer> searchWord(String searchedWord){
         ArrayList<Integer> searchedIndex = new ArrayList<>();
 
@@ -136,6 +137,7 @@ public class WordCRUD implements ICRUD{
 
         return searchedIndex;
     }
+    //method to search words by level and return their index
     public ArrayList<Integer> searchLevel(int searchedLevel){
         ArrayList<Integer> searchedIndex = new ArrayList<>();
 
@@ -147,7 +149,7 @@ public class WordCRUD implements ICRUD{
 
         return searchedIndex;
     }
-
+    //static method to read words from the file
     public static void readFromFile(String fileName) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -162,6 +164,7 @@ public class WordCRUD implements ICRUD{
             e.printStackTrace();
         }
     }
+    //static method to save words as a file
     public static void writeToFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (int i=0; i<wordList.size(); i++) {
