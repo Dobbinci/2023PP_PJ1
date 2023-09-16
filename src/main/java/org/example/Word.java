@@ -45,6 +45,17 @@ public class Word {
             Asterisk = Asterisk + "*";
         }
 
-        return getId() + "  " + Asterisk + "     " + getName() + "  " + getMeaning();
+        return "  " + Asterisk + "     " + getName() + "  " + getMeaning();
+    }
+
+    public void fromLine(String line) {
+        String[] parts = line.split(" ", 4);
+        if (parts.length != 4) {
+            throw new IllegalArgumentException("Invalid format");
+        }
+        setId(Long.parseLong(parts[0]));
+        setLevel(Integer.parseInt(parts[1]));
+        setName(parts[2]);
+        setMeaning(parts[3]);
     }
 }

@@ -28,17 +28,97 @@ public class WordCRUD implements ICRUD{
     }
 
     @Override
-    public void updateWord(Object obj) {
+    public void updateWord() {
+        System.out.println("수정할 단어를 입력하세요 ");
+        Scanner scanner = new Scanner(System.in);
+        String searchedWord = scanner.nextLine();
+
+        ArrayList<Integer> searchedIndex = searchWord(searchedWord);
+
+        //print searched words
+        System.out.println("-------------------------------- ");
+        for(int i=0; i<searchedIndex.size(); i++) {
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toStringForSearching());
+        }
+        System.out.println("-------------------------------- ");
+
+        //ask which word will be updated
+        System.out.println("수정할 번호 선택: ");
+        int chosenNum = scanner.nextInt();
+        //문자열 씹힘
+        scanner.nextLine();
+        System.out.println("뜻 입력: ");
+        String updatedMeaning = scanner.nextLine();
+
+        //update meaning
+        wordList.get(searchedIndex.get(chosenNum-1)).setMeaning(updatedMeaning);
+
+        System.out.println("성공적으로 수정 되었습니다");
 
     }
 
     @Override
-    public void deleteWord(Object obj) {
+    public void deleteWord() {
+        System.out.println("삭제할 단어를 입력하세요 ");
+        Scanner scanner = new Scanner(System.in);
+        String searchedWord = scanner.nextLine();
 
+        ArrayList<Integer> searchedIndex = searchWord(searchedWord);
+
+        //print searched words
+        System.out.println("-------------------------------- ");
+        for(int i=0; i<searchedIndex.size(); i++) {
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toStringForSearching());
+        }
+        System.out.println("-------------------------------- ");
+
+        //ask which word will be updated
+        System.out.println("삭제할 번호 선택: ");
+        int chosenNum = scanner.nextInt();
+        //문자열 씹힘
+        scanner.nextLine();
+        System.out.println("정말로 삭제하시겠어요?(Y/N): ");
+        String reallyDelete = scanner.nextLine();
+        //if user chose really to delete -> delete
+        for(int i=0; i<searchedIndex.size(); i++) {
+            System.out.println(searchedIndex.get(i));
+        }
+        if(reallyDelete.equalsIgnoreCase("Y")) {
+            System.out.println("index: " + searchedIndex.get(chosenNum-1));
+            System.out.println(searchedIndex.get(chosenNum-1).getClass());
+            wordList.remove((int)searchedIndex.get(chosenNum-1));
+        }
+        System.out.println("삭제가 완료되었습니다");
     }
 
-    @Override
-    public void selectWord(long id) {
+    public void listByWord() {
+        System.out.println("검색할 단어를 입력하세요 ");
+        Scanner scanner = new Scanner(System.in);
+        String searchedWord = scanner.nextLine();
+
+        ArrayList<Integer> searchedIndex = searchWord(searchedWord);
+
+        //print searched words
+        System.out.println("-------------------------------- ");
+        for(int i=0; i<searchedIndex.size(); i++) {
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toString());
+        }
+        System.out.println("-------------------------------- ");
+    }
+
+    public void listByLevel() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=> 레벨(1:초급, 2:중급, 3:고급) 선택 : ");
+        int searchedLevel = scanner.nextInt();
+        ArrayList<Integer> searchedIndex = searchLevel(searchedLevel);
+
+        //print searched words
+        System.out.println("-------------------------------- ");
+        for(int i=0; i<searchedIndex.size(); i++) {
+            System.out.println(i+1 + wordList.get(searchedIndex.get(i)).toString());
+        }
+        System.out.println("-------------------------------- ");
 
     }
 
@@ -46,8 +126,31 @@ public class WordCRUD implements ICRUD{
     public void listAll() {
         System.out.println("-------------------------------- ");
         for (int i=0; i<wordList.size(); i++) {
-            System.out.println(wordList.get(i).toString());
+            System.out.println(i+1 + wordList.get(i).toString());
         }
         System.out.println("-------------------------------- ");
+    }
+
+    public ArrayList searchWord(String searchedWord){
+        ArrayList<Integer> searchedIndex = new ArrayList<>();
+
+        for(int i=0; i<wordList.size(); i++) {
+            if (wordList.get(i).getName().contains(searchedWord)) {
+                searchedIndex.add(i);
+            }
+        }
+
+        return searchedIndex;
+    }
+    public ArrayList searchLevel(int searchedLevel){
+        ArrayList<Integer> searchedIndex = new ArrayList<>();
+
+        for(int i=0; i<wordList.size(); i++) {
+            if (wordList.get(i).getLevel() == searchedLevel) {
+                searchedIndex.add(i);
+            }
+        }
+
+        return searchedIndex;
     }
 }

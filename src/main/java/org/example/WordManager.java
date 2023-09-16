@@ -32,15 +32,19 @@ public class WordManager {
                 wordCRUD.listAll();
             } else if (choice == 2) {
                 //listByLevel
+                wordCRUD.listByLevel();
             } else if (choice == 3) {
                 //search Word
+                wordCRUD.listByWord();
             } else if (choice == 4) {
                 //add Word
                 wordCRUD.addWord();
             } else if (choice == 5) {
                 //update Word
+                wordCRUD.updateWord();
             } else if (choice == 6) {
                 //delete Word
+                wordCRUD.deleteWord();
             } else if (choice == 7) {
                 //save Word
             } else if (choice == 0) {
