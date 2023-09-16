@@ -54,7 +54,7 @@ public class WordManager {
                 writeToFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
             } else if (choice == 0) {
                 //exit
-                System.out.println("으어어어어어어");
+                System.out.println("종료합니다");
                 exit(0);
             } else {
                 //invalid menu number
