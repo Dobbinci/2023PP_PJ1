@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordCRUD implements ICRUD{
-    private static ArrayList<Word> wordList = new ArrayList<Word>();
+    private static final ArrayList<Word> wordList = new ArrayList<Word>();
+    Scanner scanner = new Scanner(System.in);
     @Override
     public void addWord() {
         Word newWord = new Word();
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("=> 난이도(1,2,3) & 새 단어 입력 : ");
         int level = scanner.nextInt();
@@ -31,7 +31,6 @@ public class WordCRUD implements ICRUD{
     @Override
     public void updateWord() {
         System.out.println("수정할 단어를 입력하세요 ");
-        Scanner scanner = new Scanner(System.in);
         String searchedWord = scanner.nextLine();
 
         ArrayList<Integer> searchedIndex = searchWord(searchedWord);
@@ -61,7 +60,6 @@ public class WordCRUD implements ICRUD{
     @Override
     public void deleteWord() {
         System.out.println("삭제할 단어를 입력하세요 ");
-        Scanner scanner = new Scanner(System.in);
         String searchedWord = scanner.nextLine();
 
         ArrayList<Integer> searchedIndex = searchWord(searchedWord);
@@ -81,8 +79,8 @@ public class WordCRUD implements ICRUD{
         System.out.println("정말로 삭제하시겠어요?(Y/N): ");
         String reallyDelete = scanner.nextLine();
         //if user chose really to delete -> delete
-        for(int i=0; i<searchedIndex.size(); i++) {
-            System.out.println(searchedIndex.get(i));
+        for (Integer index : searchedIndex) {
+            System.out.println(index);
         }
         if(reallyDelete.equalsIgnoreCase("Y")) {
             wordList.remove((int)searchedIndex.get(chosenNum-1));
@@ -92,7 +90,6 @@ public class WordCRUD implements ICRUD{
 
     public void listByWord() {
         System.out.println("검색할 단어를 입력하세요 ");
-        Scanner scanner = new Scanner(System.in);
         String searchedWord = scanner.nextLine();
 
         ArrayList<Integer> searchedIndex = searchWord(searchedWord);
@@ -106,8 +103,6 @@ public class WordCRUD implements ICRUD{
     }
 
     public void listByLevel() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("=> 레벨(1:초급, 2:중급, 3:고급) 선택 : ");
         int searchedLevel = scanner.nextInt();
         ArrayList<Integer> searchedIndex = searchLevel(searchedLevel);
@@ -130,7 +125,7 @@ public class WordCRUD implements ICRUD{
         System.out.println("-------------------------------- ");
     }
 
-    public ArrayList searchWord(String searchedWord){
+    public ArrayList<Integer> searchWord(String searchedWord){
         ArrayList<Integer> searchedIndex = new ArrayList<>();
 
         for(int i=0; i<wordList.size(); i++) {
@@ -141,7 +136,7 @@ public class WordCRUD implements ICRUD{
 
         return searchedIndex;
     }
-    public ArrayList searchLevel(int searchedLevel){
+    public ArrayList<Integer> searchLevel(int searchedLevel){
         ArrayList<Integer> searchedIndex = new ArrayList<>();
 
         for(int i=0; i<wordList.size(); i++) {
@@ -167,12 +162,16 @@ public class WordCRUD implements ICRUD{
             e.printStackTrace();
         }
     }
-    public static void writeToFile(String fileName) throws IOException {
+    public static void writeToFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (int i=0; i<wordList.size(); i++) {
-                writer.write(i + wordList.get(i).toString());
+                writer.write(i + wordList.get(i).toStringForSave());
                 writer.newLine();
             }
+            System.out.println("저장 완료!");
+        } catch (IOException e) {
+        System.out.println("파일 저장 실패");
+        e.printStackTrace();
         }
     }
 }

@@ -3,6 +3,8 @@ package org.example;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
+import static org.example.WordCRUD.readFromFile;
+import static org.example.WordCRUD.writeToFile;
 
 public class WordManager {
 
@@ -10,7 +12,7 @@ public class WordManager {
         WordCRUD wordCRUD = new WordCRUD();
         Scanner scanner = new Scanner(System.in);
 
-        //readFromFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
+        readFromFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
 
         int choice;
 
@@ -49,12 +51,13 @@ public class WordManager {
                 wordCRUD.deleteWord();
             } else if (choice == 7) {
                 //save Word
+                writeToFile("/Users/vinci/PP2023/PP2023_PJ1/vocab.txt");
             } else if (choice == 0) {
                 //exit
                 System.out.println("으어어어어어어");
                 exit(0);
             } else {
-                System.out.println("잘못된 메뉴번호 입니다");
+                System.out.println("잘못된 메뉴 번호 입니다");
             }
         }
     }

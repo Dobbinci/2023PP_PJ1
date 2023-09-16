@@ -28,3 +28,4 @@
 27 1 bird 새
 28 2 cat 고양이
 29 3 dragon 드래곤
+30 1  kimchi 김치 

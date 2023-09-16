@@ -56,6 +56,12 @@ public class Word {
         return "  " + Asterisk + "     " + getName() + "  " + getMeaning();
     }
 
+    public String toStringForSave() {
+        String Asterisk = new String();
+
+        return " " + getLevel() + " " + getName() + " " + getMeaning();
+    }
+
     public static Word fromLine(String line) {
         String[] parts = line.split(" ", 4);
         if (parts.length != 4) {
