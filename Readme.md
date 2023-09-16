@@ -31,17 +31,17 @@
 
 5.[파일읽기] 프로그램 시작 시 데이터파일로부터 단어 목록을 읽어 등록하는
 기능은 잘 실행되는가?
-- 출력화면
+
 <img width="403" alt="image" src="https://github.com/Dobbinci/2023PP_PJ1/assets/95361587/c954298c-4126-4f46-82cf-12d7a970f8fa">
-- 출력화면
+
 <img width="356" alt="image" src="https://github.com/Dobbinci/2023PP_PJ1/assets/95361587/fdf120be-9f95-465a-bafc-577354f33fb4">
 
 6.[파일저장] 프로그램에서 변경된 모든 단어 목록을 데이터파일에 새로 저장하는
 기능은 잘 실행되는가?
 
 <img width="244" alt="image" src="https://github.com/Dobbinci/2023PP_PJ1/assets/95361587/738acdbb-9c7b-43cb-8571-f0cadceee654">
-- 수정항목 반영
+
 <img width="342" alt="image" src="https://github.com/Dobbinci/2023PP_PJ1/assets/95361587/2be7ee22-f697-4cec-8d99-4000447310b7">
-- 수정항목 반영
+
 <img width="439" alt="image" src="https://github.com/Dobbinci/2023PP_PJ1/assets/95361587/f9927a7e-5b46-42df-90d9-459ac1750df3">
 
